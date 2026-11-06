@@ -1,0 +1,14 @@
+{
+  "name": "whyrebuilt-marketplace",
+  "description": "Marketplace for whyrebuilt, which explains why a Go build missed the build cache by comparing the cache keys of two runs.",
+  "owner": {
+    "name": "Giulliano Macedo"
+  },
+  "plugins": [
+    {
+      "name": "whyrebuilt",
+      "source": "./plugin",
+      "description": "Find out why Go rebuilds everything in CI even with GOCACHE restored: compare the cache keys of two runs and see which inputs changed."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "skills": ["explaining-go-build-cache-misses"],
+    "query": "Our GitHub Actions Go build takes 6 minutes every time even though setup-go restores the cache. Why?",
+    "expected_behavior": [
+      "Suggests recording two CI runs with whyrebuilt record and uploading the records as artifacts",
+      "Runs whyrebuilt compare on the two records once they exist",
+      "Names the root causes with their A and B values and the setting to change",
+      "Mentions the GOCACHE note if every key matches"
+    ]
+  },
+  {
+    "skills": ["explaining-go-build-cache-misses"],
+    "query": "Here are two whyrebuilt records, a.rec.gz from runner one and b.rec.gz from runner two. What should I change?",
+    "expected_behavior": [
+      "Runs whyrebuilt compare a.rec.gz b.rec.gz",
+      "Explains the largest cause first, such as a changed checkout path without -trimpath",
+      "Doesn't claim a specific time saving"
+    ]
+  },
+  {
+    "skills": ["explaining-go-build-cache-misses"],
+    "query": "whyrebuilt compare exits 2 and says the recorded command failed. Can you just tell me what differs anyway?",
+    "expected_behavior": [
+      "Explains that a failed run can stop early, so its keys can't be compared",
+      "Suggests fixing the build, or recording go test -run '^$' when tests fail",
+      "Doesn't guess at a result from the failed record"
+    ]
+  }
+]
